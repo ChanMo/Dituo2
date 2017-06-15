@@ -1,0 +1,24 @@
+<!--GridLayout rows="*,auto">
+  <ScrollView row="0">
+    <router-outlet></router-outlet>
+  </ScrollView>
+  <GridLayout row="1" columns="*,*,*,*" class="footer">
+    <StackLayout [nsRouterLink]="['/article']" col="0">
+      <Label class="icon" [text]="icon1"></Label>
+      <Label text="首页"></Label>
+    </StackLayout>
+    <StackLayout [nsRouterLink]="['/category']" col="1">
+      <Label class="icon" [text]="icon2"></Label>
+      <Label text="分类"></Label>
+    </StackLayout>
+    <StackLayout [nsRouterLink]="['/commodity/category']" col="2">
+      <Label class="icon" [text]="icon3"></Label>
+      <Label text="商城"></Label>
+    </StackLayout>
+    <StackLayout [nsRouterLink]="['/member']" col="3">
+      <Label class="icon" [text]="icon4"></Label>
+      <Label text="我的"></Label>
+    </StackLayout>
+  </GridLayout>
+</GridLayout-->
+<page-router-outlet></page-router-outlet>

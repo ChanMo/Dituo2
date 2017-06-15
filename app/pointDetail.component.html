@@ -1,0 +1,23 @@
+<ActionBar class="action-bar" title="我的积分">
+  <NavigationButton (tap)="goBack()" text="返回" android.systemIcon="ic_menu_back">
+  </NavigationButton>
+</ActionBar>
+
+<StackLayout class="point">
+  <Label class="title" [text]="point.count" style="background-color:#006968;color:white;">
+  </Label>
+  <Label text="积分记录"
+    style="padding:5 0 5 15;color:rgba(0,0,0,0.87);font-size:20;"></Label>
+  <ListView [items]="point.logs" class="list-group">
+    <ng-template let-item="item">
+      <GridLayout class="list-group-item" rows="auto,auto" columns="*, auto">
+        <Label row="0" col="0" [text]="item.description"></Label>
+        <Label row="1" col="0" [text]="item.created.substr(0,10)"
+          style="color:rgba(0,0,0,0.38);font-size:14"></Label>
+        <Label row="0" col="1" rowspan="2" [text]="item.count"
+          style="color:rgba(255,0,0,0.54);font-size:24"></Label>
+      </GridLayout>
+    </ng-template>
+  </ListView>
+</StackLayout>
+

@@ -1,0 +1,25 @@
+.article-list {
+  background-color: rgba(black, 0.06);
+  StackLayout {
+    margin-bottom: 15;
+    background-color: white;
+  }
+  Label {
+    padding: 10 10;
+    font-size: 20;
+  }
+}
+.article-detail {
+  height: auto;
+  padding: 10;
+  .title {
+    font-size: 32;
+    margin-bottom: 10;
+  }
+  Image {
+    margin-bottom: 10;
+  }
+  .body {
+    font-size: 18;
+  }
+}

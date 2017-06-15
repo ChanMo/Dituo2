@@ -1,0 +1,28 @@
+<ActionBar class="action-bar" title="任务列表">
+  <NavigationButton (tap)="goBack()"
+  text="Go Back" android.systemIcon="ic_menu_back"></NavigationButton>
+</ActionBar>
+
+<ListView [items]="taskList" class="list-group">
+  <ng-template let-item="item">
+    <StackLayout [nsRouterLink]="['/task', item.id]" class="list-group-item"
+      style="padding:0;">
+      <GridLayout columns="*,auto" style="padding:10 10;background-color:#efefef;">
+        <Label row="0" col="0" [text]="item.description"></Label>
+        <Label row="0" col="1" *ngIf="item.status == 1" text="新任务"></Label>
+        <Label row="0" col="1" *ngIf="item.status == 2" text="已提交"></Label>
+        <Label row="0" col="1" *ngIf="item.status == 3" text="已通过" color="green"></Label>
+        <Label row="0" col="1" *ngIf="item.status == 4" text="被驳回" color="red"></Label>
+        <Label row="0" col="1" *ngIf="item.status == 5" text="已完成"></Label>
+      </GridLayout>
+      <GridLayout rows="auto,auto" columns="48,*"
+        style="padding:10;">
+        <Image row="0" col="0" rowspan="2" [src]="item.image" style="width:48;height:48;"></Image>
+        <Label row="0" col="1" [text]="'奖励积分: ' + item.point"
+          style="padding-left:10;"></Label>
+        <Label row="1" col="1" [text]="'开始时间: ' + item.created.substr(0,10) + ' ' + item.created.substr(11,8)"
+          style="padding-left:10;"></Label>
+      </GridLayout>
+    </StackLayout>
+  </ng-template>
+</ListView>

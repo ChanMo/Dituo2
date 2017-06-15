@@ -1,0 +1,11 @@
+<ActionBar class="action-bar" title="帝拓资讯"></ActionBar>
+<StackLayout style="background-color:rgba(0,0,0,0);">
+  <Image src="~/banner.jpg"></Image>
+  <WrapLayout>
+    <StackLayout width="50%" style="padding:5;"
+      *ngFor="let item of categoryList"
+      [nsRouterLink]="['/category', item.id]">
+      <Image [src]="item.cover"></Image>
+    </StackLayout>
+  </WrapLayout>
+</StackLayout>

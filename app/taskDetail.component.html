@@ -1,0 +1,42 @@
+<ActionBar class="action-bar" title="任务详情">
+  <NavigationButton (tap)="goBack()"
+  text="Go Back" android.systemIcon="ic_menu_back"></NavigationButton>
+</ActionBar>
+
+<ScrollView>
+<StackLayout>
+  <GridLayout rows="auto,auto,auto,auto" columns="auto, *" style="padding:20;">
+    <Label row="0" col="0" text="任务描述:"></Label>
+    <Label row="0" col="1" [text]="task.description"></Label>
+    <Label row="1" col="0" text="奖励积分:"></Label>
+    <Label row="1" col="1" [text]="task.point"></Label>
+    <Label row="2" col="0" text="开始时间:"></Label>
+    <Label row="2" col="1" [text]="task.created.substr(0,10)"></Label>
+    <Label row="3" col="0" text="任务状态:"></Label>
+
+    <Label *ngIf="task.status == 1" row="3" col="1" text="新任务"></Label>
+    <Label *ngIf="task.status == 2" row="3" col="1" text="已提交"></Label>
+    <Label *ngIf="task.status == 3" row="3" col="1" text="已通过"></Label>
+    <Label *ngIf="task.status == 4" row="3" col="1" text="被驳回"></Label>
+    <Label *ngIf="task.status == 5" row="3" col="1" text="已完成"></Label>
+  </GridLayout>
+
+  <StackLayout *ngIf="task.screenshot" class="p-20">
+    <Label class="h3" text="应用截图"></Label>
+    <Image [src]="task.screenshot"></Image>
+  </StackLayout>
+
+  <Image [src]="image" class="m-20" (tap)="choiceImage()"></Image>
+  <Button *ngIf="!image && task.status == 1" text="选择截图" (tap)="choiceImage()" class="m-20">
+  </Button>
+  <Button *ngIf="image" text="确认上传" (tap)="uploadImage()" class="m-20">
+  </Button>
+
+  <Button 
+    *ngIf="task.status == 3"
+    text="领取积分"
+    (tap)="getPoint()"
+    class="btn btn-primary">
+  </Button>
+</StackLayout>
+</ScrollView>

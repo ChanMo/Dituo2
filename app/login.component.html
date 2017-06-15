@@ -1,0 +1,11 @@
+<StackLayout class="login">
+  <Image src="~/logo.png"></Image>
+  <TextField hint="手机号码" keyboardType="number" [(ngModel)]="mobile">
+  </TextField>
+  <TextField hint="密码" secure="true" [(ngModel)]="password">
+  </TextField>
+  
+  <Button text="登录" class="btn btn-primary" (tap)="login()"></Button>
+  <Label class="text-center" [nsRouterLink]="['/register']" text="点击注册"></Label>
+
+</StackLayout>

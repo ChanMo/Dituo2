@@ -1,0 +1,8 @@
+<ActionBar class="action-bar" title="帝拓资讯"></ActionBar>
+<TabView>
+  <ng-template ngFor let-tab [ngForOf]="categoryList">
+  <StackLayout *tabItem="{title: tab.name}">
+    <article-list [category]="tab.id"></article-list>
+  </StackLayout>
+  </ng-template>
+</TabView>

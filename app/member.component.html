@@ -1,0 +1,43 @@
+<StackLayout>
+  <StackLayout class="member-header"
+    style="margin-bottom:10;padding:25 0;background-color:#006968;">
+    <Image class="img-circle" width="70" height="70"
+      src="http://img.hb.aicdn.com/45ce9399cbd39d27fa4621c2ccf8c53872bb44b813239f-TiyV6e_fw658"
+      [nsRouterLink]="['/info']"></Image>
+    <Label class="h3 text-center text-muted" [text]="user.first_name"
+      style="color:white;margin-top:5;"></Label>
+  </StackLayout>
+
+  <GridLayout columns="40,*,30" [nsRouterLink]="['/task']" class="member-item">
+    <Label col="0" class="icon" text="&#xf278;"></Label>
+    <Label col="1" text="我的任务"></Label>
+    <Label col="2" class="icon" text="&#xf105;"></Label>
+  </GridLayout>
+  <GridLayout columns="40,*,30" [nsRouterLink]="['/code']" class="member-item">
+    <Label col="0" class="icon" text="&#xf130;"></Label>
+    <Label col="1" text="我要代言"></Label>
+    <Label col="2" class="icon" text="&#xf105;"></Label>
+  </GridLayout>
+  <GridLayout columns="40,*,30" [nsRouterLink]="['/point']" class="member-item">
+    <Label col="0" class="icon" text="&#xf145;"></Label>
+    <Label col="1" text="我的积分"></Label>
+    <Label col="2" class="icon" text="&#xf105;"></Label>
+  </GridLayout>
+  <GridLayout columns="40,*,30" [nsRouterLink]="['/version']" class="member-item">
+    <Label col="0" class="icon" text="&#xf129;"></Label>
+    <Label col="1" text="关于帝拓"></Label>
+    <Label col="2" class="icon" text="&#xf105;"></Label>
+  </GridLayout>
+  <GridLayout columns="40,*,30" [nsRouterLink]="['/contact']" class="member-item">
+    <Label col="0" class="icon" text="&#xf003;"></Label>
+    <Label col="1" text="联系我们"></Label>
+    <Label col="2" class="icon" text="&#xf105;"></Label>
+  </GridLayout>
+  <GridLayout columns="40,*,30" [nsRouterLink]="['/web', 'http://m.baidu.com']"
+  class="member-item">
+    <Label col="0" class="icon" text="&#xf09d;"></Label>
+    <Label col="1" text="申请信用卡"></Label>
+    <Label col="2" class="icon" text="&#xf105;"></Label>
+  </GridLayout>
+
+</StackLayout>

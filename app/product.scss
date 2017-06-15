@@ -1,0 +1,25 @@
+.category-list {
+}
+.product-detail {
+  padding: 40 20 20;
+  &__header {
+    padding: 20 0;
+    text-align: center;
+    .cover {
+      width: 80;
+      height: 80;
+      margin-bottom: 20
+    }
+  }
+  &__main {
+    .h2 {
+      margin-bottom: 10;
+    }
+    TextView {
+      border: none;
+    }
+    Button {
+      margin-top: 20;
+    }
+  }
+}

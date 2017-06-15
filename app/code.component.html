@@ -1,0 +1,39 @@
+<ActionBar class="action-bar" title="我要代言">
+  <NavigationButton (tap)="goBack()" text="返回" android.systemIcon="ic_menu_back">
+  </NavigationButton>
+</ActionBar>
+
+<StackLayout>
+<StackLayout style="background-color:#006968;color:white;text-align:center;padding:30 10 20;height:auto;">
+  <StackLayout>
+    <Label text="我的推广码:"></Label>
+    <Label [text]="code.number" style="font-size:30;"></Label>
+  </StackLayout>
+  <GridLayout rows="auto" columns="*,*,*" style="padding:30 0 10">
+    <StackLayout col="0">
+      <Label text="推广总数"></Label>
+      <Label [text]="code.descendant_count" style="font-size:24;color:gold"></Label>
+    </StackLayout>
+    <StackLayout col="1">
+      <Label text="直接下级"></Label>
+      <Label [text]="code.children_count" style="font-size:24;color:gold;"></Label>
+    </StackLayout>
+    <StackLayout col="2">
+      <Label text="间接下级"></Label>
+      <Label [text]="code.descendant_count - code.children_count"
+        style="font-size:24;color:gold;"></Label>
+    </StackLayout>
+  </GridLayout>
+</StackLayout>
+<Label class="h2 p-10 text-primary" text="我的下级"></Label>
+<StackLayout>
+  <ListView [items]="code.children_list" class="list-group">
+    <ng-template let-item="item">
+      <GridLayout class="list-group-item" columns="*, auto">
+        <Label [text]="item.name" col="0"></Label>
+        <Label class="text-right" [text]="item.mobile.slice(0,3) + '****' + item.mobile.slice(7)" col="1" style="letter-spacing:0.2"></Label>
+      </GridLayout>
+    </ng-template>
+  </ListView>
+</StackLayout>
+</StackLayout>

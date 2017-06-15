@@ -1,0 +1,27 @@
+.login {
+  padding: 100 30 0;
+  Image {
+    height: 120;
+    margin-bottom: 30;
+  }
+}
+
+.register {
+  padding: 50 30 0;
+}
+
+.member-header {
+  height: auto;
+  padding: 20 0;
+}
+.member-item {
+  background-color: white;
+  margin-bottom: 1;
+  padding: 12 10;
+  Label {
+    font-size: 20;
+  }
+  .icon {
+    color: rgba(0,0,0,0.38);
+  }
+}

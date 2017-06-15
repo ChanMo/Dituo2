@@ -1,0 +1,25 @@
+<GridLayout rows="*,auto">
+  <StackLayout row="0" visibility="{{ visibility1 ? 'visible' : 'collapsed' }}"
+    style="background-color:#eee;">
+    <article-category></article-category>
+  </StackLayout>
+  <ScrollView row="0" visibility="{{ visibility2 ? 'visible' : 'collapsed' }}"
+    style="background-color:#eee;">
+    <category-list></category-list>
+  </ScrollView>
+  <StackLayout row="0" visibility="{{ visibility3 ? 'visible' : 'collapsed' }}"
+    style="backgrond-color:#eee;">
+    <commodity-category></commodity-category>
+  </StackLayout>
+  <ScrollView row="0" visibility="{{ visibility4 ? 'visible' : 'collapsed' }}"
+    style="background-color:#eee">
+    <member></member>
+  </ScrollView>
+
+  <SegmentedBar row="1" [items]="items" selectedIndex="0"
+    style="border-color:white;background-repeat:no-repeat;background-size:contain;background-position:center" selectedBackgroundColor="transparent"
+    [backgroundImage]="footerBg"
+    selectedColor="red"
+    (selectedIndexChange)="onSelectedIndexChange($event)">
+  </SegmentedBar>
+</GridLayout>

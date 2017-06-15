@@ -1,0 +1,19 @@
+<ActionBar class="action-bar" title="帝拓资讯">
+  <ActionItem
+           ios.systemIcon="9" ios.position="right"
+           android.systemIcon="ic_menu_share"
+           android.position="actionBar"></ActionItem>
+  <NavigationButton text="返回" android.systemIcon="ic_menu_back"
+  (tap)="goBack()">
+  </NavigationButton>
+</ActionBar>
+
+<ScrollView>
+<StackLayout class="article-detail" style="padding:20 15;">
+  <Label [text]="article.name" textWrap="true"
+    style="font-size:26;margin-bottom:20;"></Label>
+  <Image [src]="article.image"></Image>
+  <HtmlView [html]="article.content" style="font-size:20;"></HtmlView>
+</StackLayout>
+
+</ScrollView>

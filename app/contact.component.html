@@ -1,0 +1,20 @@
+<ActionBar class="action-bar" title="联系我们">
+  <NavigationButton (tap)="goBack()"
+  text="Go Back" android.systemIcon="ic_menu_back"></NavigationButton>
+</ActionBar>
+
+<StackLayout>
+<StackLayout class="header">
+  <Image class="img-circle" src="http://img.hb.aicdn.com/1b9dbe2603568b469ad326ac56979903a799ccab1f585-HejLQd_fw658"></Image>
+  <Label class="title text-center" text="联系客服"></Label>
+</StackLayout>
+<ListView [items]="contactList" class="list-group">
+  <ng-template let-item="item">
+    <GridLayout columns="auto,auto,*" class="list-group-item">
+      <Label col="0" text="客服"></Label>
+      <Image col="1" class="img-rounded" [src]="item.icon"></Image>
+      <Label col="2" [text]="item.content"></Label>
+    </GridLayout>
+  </ng-template>
+</ListView>
+</StackLayout>

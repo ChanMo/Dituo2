@@ -1,0 +1,11 @@
+<WrapLayout orientation="horizontal" width="100%"
+  style="background-color:#efefef;">
+  <StackLayout *ngFor="let item of commodityList" width="50%" style="padding:5;"
+    [nsRouterLink]="['/commodity', item.id]">
+    <Image [src]="item.cover"></Image>
+    <Label [text]="item.name" textWrap="true"
+      style="background-color:white;padding:5;"></Label>
+    <Label [text]="'积分: ' + item.point"
+      style="background-color:white;padding:5;"></Label>
+  </StackLayout>
+</WrapLayout>

@@ -1,0 +1,39 @@
+<ActionBar class="action-bar" [title]="product.name">
+  <ActionItem [nsRouterLink]="['/product/task', product.id]"
+    ios.systemIcon="5" ios.position="right"
+    android.systemIcon="ic_menu_paste_holo_light"
+    android.position="actionBar"></ActionItem>
+  <NavigationButton text="Go Back" android.systemIcon="ic_menu_back"
+  (tap)="goBack()"></NavigationButton>
+</ActionBar>
+
+<ScrollView>
+<StackLayout class="product-detail">
+  <StackLayout class="product-detail__header">
+    <Image [src]="product.cover" class="cover img-rounded"></Image>
+    <Label class="h2" [text]="product.name"></Label>
+    <Label [text]="'奖励积分: ' + product.point"></Label>
+  </StackLayout>
+
+  <Label class="h2" text="应用截图"></Label>
+  <ScrollView orientation="horizontal">
+  <StackLayout orientation="horizontal" class="m-b-10">
+    <Image [src]="item.image" *ngFor="let item of product.images"
+    style="height:200;margin:2;"></Image>
+  </StackLayout>
+  </ScrollView>
+
+  <StackLayout class="product-detail__main">
+    <Label class="h2" text="应用介绍"></Label>
+    <Label class="body" editable="false" textWrap="true"
+      [text]="product.content">
+    </Label>
+    <Button class="btn btn-primary" text="体验"
+      [nsRouterLink]="['/web', product.link]"></Button>
+    <Label *ngIf="is_received"
+      text="已领取任务，点击查看"
+      class="text-center m-t-10"
+      [nsRouterLink]="['/task', task_id]"></Label>
+  </StackLayout>
+</StackLayout>
+</ScrollView>

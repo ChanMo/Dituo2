@@ -1,0 +1,13 @@
+<ActionBar class="action-bar" title="任务说明">
+  <NavigationButton text="Go Back" android.systemIcon="ic_menu_back"
+  (tap)="goBack()"></NavigationButton>
+</ActionBar>
+
+<StackLayout class="p-20">
+  <Label [text]="product.task" textWrap=true class="body" 
+    style="font-size:18;"></Label>
+  <Button *ngIf="!this.is_received" text="领取任务" class="btn btn-primary"
+    (tap)="showDialogs()"></Button>
+  <Button *ngIf="this.is_received" text="查看进度" class="btn btn-primary"
+    [nsRouterLink]="['/task', task_id]"></Button>
+</StackLayout>
