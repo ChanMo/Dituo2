@@ -17,7 +17,9 @@ export class ArticleListComponent {
 
   constructor(
     private articleService: ArticleService,
-  ) {}
+    ) {
+    console.log(this.category);
+    }
 
   ngOnInit(): void {
     this.getList();

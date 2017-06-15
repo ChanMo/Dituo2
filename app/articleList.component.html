@@ -1,7 +1,7 @@
 <ListView [items]="articleList" class="article-list"
   (loadMoreItems)="loadMoreItems()" style="separator-color:transparent;">
   <ng-template let-item="item">
-    <GridLayout rows="*,*,*" columns="*,120"
+    <GridLayout rows="auto,auto,auto" columns="*,120"
       [nsRouterLink]="['/article', item.id]"
       style="background-color:white;">
       <Label row="0" col="0" rowspan="2" [text]="item.name" textWrap="true"

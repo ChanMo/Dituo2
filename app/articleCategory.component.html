@@ -1,4 +1,6 @@
 <ActionBar class="action-bar" title="帝拓资讯"></ActionBar>
+
+<android>
 <TabView>
   <ng-template ngFor let-tab [ngForOf]="categoryList">
   <StackLayout *tabItem="{title: tab.name}">
@@ -6,3 +8,22 @@
   </StackLayout>
   </ng-template>
 </TabView>
+</android>
+
+<ios>
+<GridLayout rows="auto,*">
+  <ScrollView row="0" orientation="horizontal">
+    <StackLayout orientation="horizontal"
+    style="background-color:white;margin-bottom:1;">
+        <Label *ngFor="let tab of categoryList; let i=index" [text]="tab.name"
+            (tap)="onChange(i)" style="font-size:14;padding:10 10;border-bottom-width:2"
+            class="{{ selectedIndex == i ? 'active' : 'inactive' }}">
+        </Label>
+    </StackLayout>
+  </ScrollView>
+  <StackLayout row="1" *ngFor="let tab of categoryList; let i=index"
+  visibility="{{ selectedIndex == i ? 'visible' : 'collapsed' }}" >
+    <article-list [category]="tab.id"></article-list>
+  </StackLayout>
+</GridLayout>
+</ios>

@@ -1,11 +1,20 @@
-<StackLayout class="login">
+<ActionBar class="action-bar" title="登录">
+  <NavigationButton text="返回" android.systemIcon="ic_menu_back"></NavigationButton>
+</ActionBar>
+
+<StackLayout class="login form">
   <Image src="~/logo.png"></Image>
-  <TextField hint="手机号码" keyboardType="number" [(ngModel)]="mobile">
+  <StackLayout class="input-field">
+  <TextField class="input input-border" ios:style="padding:10"
+  hint="手机号码" keyboardType="number" [(ngModel)]="mobile">
   </TextField>
-  <TextField hint="密码" secure="true" [(ngModel)]="password">
+  <TextField class="input input-border" ios:style="padding:10"
+  hint="密码" secure="true" [(ngModel)]="password">
   </TextField>
+  </StackLayout>
   
   <Button text="登录" class="btn btn-primary" (tap)="login()"></Button>
-  <Label class="text-center" [nsRouterLink]="['/register']" text="点击注册"></Label>
+  <Label class="text-center" style="font-size:14"
+      [nsRouterLink]="['/register']" text="点击注册"></Label>
 
 </StackLayout>

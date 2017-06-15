@@ -1,5 +1,5 @@
 <ActionBar class="action-bar" title="注册">
-  <NavigationButton text="Go Back" android.systemIcon="ic_menu_back"></NavigationButton>
+  <NavigationButton text="返回" android.systemIcon="ic_menu_back"></NavigationButton>
 </ActionBar>
 
 <ScrollView>
@@ -7,39 +7,47 @@
 
     <StackLayout class="input-field">
       <Label class="label" text="手机号码"></Label>
-      <TextField hint="请输入正确的手机号码" [(ngModel)]="mobile"></TextField>
+      <TextField class="input input-border" ios:style="padding:8"
+      hint="请输入正确的手机号码" [(ngModel)]="mobile"></TextField>
     </StackLayout>
 
     <StackLayout class="input-field">
       <Label class="label" text="验证码"></Label>
       <GridLayout rows="auto" columns="*,100">
-        <TextField col="0" hint="请输入短信验证码" [(ngModel)]="inputCode">
+        <TextField col="0" class="input input-border" ios:style="padding:8"
+        hint="请输入短信验证码" [(ngModel)]="inputCode">
         </TextField>
-        <Button col="1" *ngIf="!validCodeSend" text="点击获取" (tap)="getCode()"></Button>
-        <Button col="1" *ngIf="validCodeSend" [text]="'剩余:' + lastTime + 's'">
+        <Button col="1" style="font-size:14"
+            *ngIf="!validCodeSend" text="点击获取" (tap)="getCode()"></Button>
+        <Button col="1" style="font-size:14"
+            *ngIf="validCodeSend" [text]="'剩余:' + lastTime + 's'">
         </Button>
       </GridLayout>
     </StackLayout>
 
     <StackLayout class="input-field">
       <Label class="label" text="姓名"></Label>
-      <TextField hint="请输入您的真实姓名" [(ngModel)]="name"></TextField>
+      <TextField class="input input-border" ios:style="padding:8"
+      hint="请输入您的真实姓名" [(ngModel)]="name"></TextField>
     </StackLayout>
 
     <StackLayout class="input-field">
       <Label class="label" text="推广码"></Label>
-      <TextField hint="请输入6位推广码" [(ngModel)]="code"></TextField>
+      <TextField class="input input-border" ios:style="padding:8"
+      hint="请输入6位推广码" [(ngModel)]="code"></TextField>
     </StackLayout>
 
     <StackLayout class="input-field">
       <Label class="label" text="密码"></Label>
-      <TextField hint="请输入密码" secure="true" [(ngModel)]="password">
+      <TextField class="input input-border" ios:style="padding:8"
+      hint="请输入密码" secure="true" [(ngModel)]="password">
       </TextField>
     </StackLayout>
 
     <StackLayout class="input-field">
       <Label class="label" text="确认密码"></Label>
-      <TextField hint="请再次输入密码" secure="true" [(ngModel)]="repassword">
+      <TextField class="input input-border"  ios:style="padding:8"
+      hint="请再次输入密码" secure="true" [(ngModel)]="repassword">
       </TextField>
       <Label class="text-danger" text="两次输入密码不一致"
         [visibility]="is_prepassword_error ? 'visible' : 'collapsed'"></Label>
@@ -47,7 +55,8 @@
 
     <StackLayout>
       <Button class="btn btn-primary btn-active" text="注册" (tap)="register()"></Button>
-      <Label class="text-center" [nsRouterLink]="['/login']" text="已有帐号？点击登录"></Label>
+      <Label class="text-center" style="font-size:14"
+          [nsRouterLink]="['/login']" text="已有帐号？点击登录"></Label>
     </StackLayout>
 
   </StackLayout>

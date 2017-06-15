@@ -9,6 +9,14 @@
     font-size: 20;
   }
 }
+
+.active {
+    border-bottom-color: #019d9b;
+}
+.inactivet {
+    border-bottom-color: transparent;
+}
+
 .article-detail {
   height: auto;
   padding: 10;

@@ -2,10 +2,10 @@
   <StackLayout class="member-header"
     style="margin-bottom:10;padding:25 0;background-color:#006968;">
     <Image class="img-circle" width="70" height="70"
-      src="http://img.hb.aicdn.com/45ce9399cbd39d27fa4621c2ccf8c53872bb44b813239f-TiyV6e_fw658"
+      src="~/avatar.jpg"
       [nsRouterLink]="['/info']"></Image>
     <Label class="h3 text-center text-muted" [text]="user.first_name"
-      style="color:white;margin-top:5;"></Label>
+      [nsRouterLink]="['/info']" style="color:white;margin-top:5;"></Label>
   </StackLayout>
 
   <GridLayout columns="40,*,30" [nsRouterLink]="['/task']" class="member-item">

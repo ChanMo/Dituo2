@@ -15,6 +15,7 @@ import { AuthService } from './shared/auth.service';
 
 export class MemberComponent implements OnInit {
   user: User;
+  iconRight: string;
 
   constructor(
     private page: Page,
@@ -23,16 +24,14 @@ export class MemberComponent implements OnInit {
   ) {
     this.user = new User();
   }
+
   ngOnInit() {
+    this.iconRight = String.fromCharCode(0xf130);
     //this.page.actionBarHidden = true;
     if (this.authService.checkLogin()) {
       this.authService.getInfo().subscribe(info => this.user = info);
     } else {
       this.user.first_name = '点击登录';
     }
-  }
-
-  goLink() {
-    utils.openUrl('http://www.baidu.com');
   }
 }
