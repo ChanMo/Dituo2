@@ -9,10 +9,11 @@
       [nsRouterLink]="['/product', item.id]" class="list-group-item">
     <Image row="0" col="0" rowspan="2" [src]="item.cover"
       class="thumb img-rounded"></Image>
-    <Label row="0" col="1" [text]="item.name" style="font-size:18;"></Label>
+    <Label row="0" col="1" [text]="item.name" style="font-size:16;"></Label>
     <Label row="2" col="1" [text]="item.desc" textWrap="true"
-      style="color:rgba(0,0,0,0.54);font-size:16;"></Label>
-    <Label row="0" col="2" rowspan="2" [text]="'积分:' + item.point"></Label>
+      style="color:rgba(0,0,0,0.54);font-size:14;"></Label>
+    <Label row="0" col="2" rowspan="2" [text]="'积分:' + item.point"
+	style="font-size:14;"></Label>
     </GridLayout>
   </ng-template>
 </ListView>

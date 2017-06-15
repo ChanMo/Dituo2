@@ -4,10 +4,11 @@
     <GridLayout rows="*,*,*" columns="*,120"
       [nsRouterLink]="['/article', item.id]"
       style="background-color:white;">
-      <Label row="0" col="0" rowspan="2" [text]="item.name" textWrap="true"></Label>
+      <Label row="0" col="0" rowspan="2" [text]="item.name" textWrap="true"
+	style="font-size:16;"></Label>
       <Label row="3" col="0"
         [text]="item.created.substr(0,10) + ' ' + item.created.substr(11,8)"
-        style="font-size:18;color:rgba(0,0,0,0.38);padding-top:0;"></Label>
+        style="font-size:14;color:rgba(0,0,0,0.38);padding-top:0;"></Label>
       <Image row="0" col="1" rowspan="3" [src]="item.image"
         style="margin-right:10"></Image>
     </GridLayout>

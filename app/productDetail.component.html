@@ -1,9 +1,9 @@
 <ActionBar class="action-bar" [title]="product.name">
   <ActionItem [nsRouterLink]="['/product/task', product.id]"
-    ios.systemIcon="5" ios.position="right"
+    ios.systemIcon="9" ios.position="right"
     android.systemIcon="ic_menu_paste_holo_light"
     android.position="actionBar"></ActionItem>
-  <NavigationButton text="Go Back" android.systemIcon="ic_menu_back"
+  <NavigationButton text="返回" android.systemIcon="ic_menu_back"
   (tap)="goBack()"></NavigationButton>
 </ActionBar>
 
