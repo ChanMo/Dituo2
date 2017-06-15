@@ -17,7 +17,7 @@ export class CommodityService {
     //headers.append('Authorization', 'Token ' + Config.token);
 
     let url = Config.apiUrl + 'commodity/?category=' + categoryId;
-    console.log(url);
+    //console.log(url);
     return this.http.get(
       url,
       { headers: headers }
@@ -50,7 +50,7 @@ export class CommodityService {
     } else {
       errMsg = error.message ? error.message : error.toString();
     }
-    console.log(errMsg);
+    //console.log(errMsg);
     return Observable.throw(errMsg);
   }
 }

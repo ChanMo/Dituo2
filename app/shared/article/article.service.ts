@@ -72,7 +72,7 @@ export class ArticleService {
       errMsg = error.message ? error.message : error.toString();
     }
     //console.log(JSON.stringify(error.json()));
-    console.log(errMsg);
+    //console.log(errMsg);
     return Observable.throw(errMsg);
   }
 

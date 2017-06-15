@@ -30,7 +30,7 @@ export class CategoryService {
     headers.append('Content-Type', 'application/json');
     //headers.append('Authorization', 'Token ' + Config.token);
 
-    console.log(id);
+    //console.log(id);
     return this.http.get(
       Config.apiUrl + 'product/category/' + id + '/',
       { headers: headers }
