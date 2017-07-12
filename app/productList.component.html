@@ -1,8 +1,4 @@
-<ActionBar class="action-bar" [title]="category.name">
-  <NavigationButton text="返回" android.systemIcon="ic_menu_back" (tap)="goBack()">
-  </NavigationButton>
-</ActionBar>
-
+<PullToRefresh (refresh)="refreshList($event)">
 <ListView [items]="productList" class="list-group" style="separator-color:#ccc">
   <ng-template let-item="item">
     <GridLayout columns="80, *, 60" rows="*,*"
@@ -17,3 +13,4 @@
     </GridLayout>
   </ng-template>
 </ListView>
+</PullToRefresh>

@@ -11,13 +11,11 @@ import { Config } from '../config';
 export class CommodityService {
   constructor(private http: Http) {}
 
-  getList(categoryId: number): Observable<Commodity[]> {
+  getList(categoryId: number = 0,search: string = ''): Observable<Commodity[]> {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    //headers.append('Authorization', 'Token ' + Config.token);
 
-    let url = Config.apiUrl + 'commodity/?category=' + categoryId;
-    //console.log(url);
+    let url = Config.apiUrl + 'commodity/?category=' + categoryId + '&search=' + search;
     return this.http.get(
       url,
       { headers: headers }

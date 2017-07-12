@@ -5,7 +5,7 @@
 
 <ScrollView>
 <StackLayout>
-  <GridLayout rows="auto,auto,auto,auto" columns="auto, *" style="padding:20;">
+  <GridLayout rows="auto,auto,auto,auto,auto,auto" columns="auto, *" style="padding:20;">
     <Label row="0" col="0" text="任务描述:"></Label>
     <Label row="0" col="1" [text]="task.description"></Label>
     <Label row="1" col="0" text="奖励积分:"></Label>
@@ -19,9 +19,14 @@
     <Label *ngIf="task.status == 3" row="3" col="1" text="已通过"></Label>
     <Label *ngIf="task.status == 4" row="3" col="1" text="被驳回"></Label>
     <Label *ngIf="task.status == 5" row="3" col="1" text="已完成"></Label>
+
+    <Label *ngIf="task.status != 1" row="4" col="0" text="用户名:"></Label>
+    <Label *ngIf="task.status != 1" row="4" col="1" [text]="task.name"></Label>
+    <Label *ngIf="task.status != 1" row="5" col="0" text="手机号码:"></Label>
+    <Label *ngIf="task.status != 1" row="5" col="1" [text]="task.mobile"></Label>
   </GridLayout>
 
-  <StackLayout *ngIf="task.screenshot" class="p-20">
+  <!--StackLayout *ngIf="task.screenshot" class="p-20">
     <Label class="h3" text="应用截图"></Label>
     <Image [src]="task.screenshot"></Image>
   </StackLayout>
@@ -30,7 +35,17 @@
   <Button *ngIf="!image && task.status == 1" text="选择截图" (tap)="choiceImage()" class="m-20">
   </Button>
   <Button *ngIf="image" text="确认上传" (tap)="uploadImage()" class="m-20">
-  </Button>
+  </Button-->
+
+  <StackLayout *ngIf="task.status == 1" style="padding:0 20;">
+    <Label text="用户名"></Label>
+    <TextField [(ngModel)]="name"></TextField>
+    <Label text="手机号码"></Label>
+    <TextField [(ngModel)]="mobile"></TextField>
+  </StackLayout>
+
+  <Button *ngIf="task.status == 1" text="提交" (tap)="submit()"
+    class="btn btn-primary"></Button>
 
   <Button 
     *ngIf="task.status == 3"

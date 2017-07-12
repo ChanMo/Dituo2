@@ -10,15 +10,16 @@ import { Config } from '../config';
 
 @Injectable()
 export class ArticleService {
-  private nextPage: string;
+  public nextPage: string;
+  public searchNextPage: string;
   public listEnd: boolean = false;
+  public searchListEnd: boolean = false;
 
   constructor(private http: Http) {}
 
   getDetail(id: number): Observable<Article> {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    //headers.append('Authorization', 'Token ' + Config.token);
     return this.http.get(
       Config.apiUrl + 'article/' + id + '/',
       { headers: headers }
@@ -27,22 +28,20 @@ export class ArticleService {
     .catch(this.handleErrors);
   }
 
-  getList(categoryId: number): Observable<Article[]> {
+  getList(categoryId: number = 0, search: string = ''): Observable<Article[]> {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    //headers.append('Authorization', 'Token ' + Config.token);
 
     let url:string;
 
     if (this.nextPage === undefined) {
-      url = Config.apiUrl + 'article/';
+      url = Config.apiUrl+'article/?category='+categoryId+'&search='+search;
     } else {
       url = this.nextPage;
     }
 
-
     return this.http.get(
-      url + '?category=' + categoryId,
+      url,
       { headers: headers }
     )
     .map((response:Response) => {
@@ -58,7 +57,6 @@ export class ArticleService {
 
   private extraData(res: Response) {
     let body = res.json();
-    // console.log(body.data);
     return body || { };
   }
 

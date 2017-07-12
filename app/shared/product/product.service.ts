@@ -1,5 +1,6 @@
 import { Injectable }               from '@angular/core';
 import { Http, Headers, Response }  from '@angular/http';
+import * as applicationSettings from 'application-settings';
 import { Observable }               from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
@@ -11,12 +12,13 @@ import { Config }                   from '../config';
 export class ProductService {
   constructor(private http: Http) {}
 
-  getList(categoryId: number): Observable<Product[]> {
+  getList(categoryId: number = 0, search: string = ''): Observable<Product[]> {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    //headers.append('Authorization', 'Token ' + Config.token);
+    let url = Config.apiUrl + 'product/?category=' + categoryId + '&search=' + search;
+    console.log(url);
     return this.http.get(
-      Config.apiUrl + 'product/?category=' + categoryId,
+      url,
       { headers: headers }
     )
     .map(response => response.json().results)
@@ -26,7 +28,6 @@ export class ProductService {
   getDetail(id: number): Observable<Product> {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    //headers.append('Authorization', 'Token ' + Config.token);
     return this.http.get(
       Config.apiUrl + 'product/' + id + '/',
       { headers: headers }
@@ -38,13 +39,14 @@ export class ProductService {
   checkReceived(id: number) {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    headers.append('Authorization', 'Token ' + Config.token);
+    headers.append('Authorization',
+      'Token ' + applicationSettings.getString("Token"));
     return this.http.get(
       Config.apiUrl + 'product/' + id + '/check/',
       { headers: headers }
     )
     .map(response => {
-      console.dir(response);
+      //console.dir(response);
       return response.json()
     })
     .catch(this.handleErrors)

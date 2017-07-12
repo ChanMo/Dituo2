@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers, Response } from '@angular/http';
+import * as applicationSettings from "application-settings";
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
@@ -15,7 +16,8 @@ export class DeviceService {
   update(device: Device): Observable<boolean> {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    headers.append('Authorization', 'Token ' + Config.token);
+    headers.append('Authorization',
+      'Token ' + applicationSettings.getString("Token"));
 
     return this.http.post(
       Config.apiUrl + 'device/',

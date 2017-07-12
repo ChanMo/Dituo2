@@ -9,6 +9,8 @@ export class Task {
     public status: number,
     public image: string,
     public created: string,
+    public name: string,
+    public mobile: string,
   ) {}
 
   getStatusName() {

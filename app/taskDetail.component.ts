@@ -28,13 +28,15 @@ export class TaskDetailComponent implements OnInit {
   image: string;
   imagePath: string;
   imageFile: any;
+  name: string;
+  mobile: string;
 
   constructor(
     private pageRoute: PageRoute,
     private taskService: TaskService,
     private routerExtensions: RouterExtensions,
   ) {
-    this.task = new Task(0,'',0,'',0,'',0,'','');
+    this.task = new Task(0,'',0,'',0,'',0,'','','','');
     this.pageRoute.activatedRoute.switchMap(
       activatedRoute => activatedRoute.params
     ).forEach((params) => { this.id = params['id']; });
@@ -54,6 +56,14 @@ export class TaskDetailComponent implements OnInit {
     this.taskService.update(this.task.id).subscribe(result => {
       this.task.status = 5;
       dialogs.alert("领取成功");
+    });
+  }
+
+  submit() {
+    this.taskService.submit(this.task.id, this.name, this.mobile)
+      .subscribe(result => {
+      this.task.status = 2;
+      dialogs.alert("提交成功");
     });
   }
 

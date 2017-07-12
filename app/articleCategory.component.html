@@ -1,7 +1,5 @@
-<ActionBar class="action-bar" title="帝拓资讯"></ActionBar>
-
 <android>
-<TabView>
+<TabView androidSelectedTabHighlightColorProperty="#006968">
   <ng-template ngFor let-tab [ngForOf]="categoryList">
   <StackLayout *tabItem="{title: tab.name}">
     <article-list [category]="tab.id"></article-list>

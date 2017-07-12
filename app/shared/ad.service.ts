@@ -1,26 +1,25 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers, Response } from '@angular/http';
-import * as applicationSettings from 'application-settings';
-import { Observable }from 'rxjs/Observable';
+import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
+import 'rxjs/add/observable/throw';
 
-import { Point } from './point';
-import { Config } from '../config';
+import { Ad } from './ad';
+import { Config } from './config';
 
 @Injectable()
-export class PointService {
+export class AdService {
   constructor(private http: Http) {}
-  getDetail(): Observable<Point> {
+
+  getDetail(): Observable<Ad> {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    headers.append('Authorization',
-      'Token ' + applicationSettings.getString("Token"));
     return this.http.get(
-      Config.apiUrl + 'point/',
+      Config.apiUrl + 'ad/',
       { headers: headers }
     )
-    .map(response => response.json())
+    .map(res => res.json())
     .catch(this.handleErrors);
   }
 
@@ -33,7 +32,6 @@ export class PointService {
     } else {
       errMsg = error.message ? error.message : error.toString();
     }
-    console.log(errMsg);
     return Observable.throw(errMsg);
   }
 }

@@ -1,3 +1,4 @@
+<PullToRefresh (refresh)="refreshList($event)">
 <ListView [items]="articleList" class="article-list"
   (loadMoreItems)="loadMoreItems()" style="separator-color:transparent;">
   <ng-template let-item="item">
@@ -14,3 +15,4 @@
     </GridLayout>
   </ng-template>
 </ListView>
+</PullToRefresh>

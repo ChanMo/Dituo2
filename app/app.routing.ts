@@ -8,6 +8,7 @@ import { ArticleListComponent } from './articleList.component';
 import { ArticleDetailComponent } from './articleDetail.component';
 
 import { CategoryListComponent } from './categoryList.component';
+import { CategoryDetailComponent } from './categoryDetail.component';
 import { ProductListComponent } from './productList.component';
 import { ProductDetailComponent } from './productDetail.component';
 import { TaskInfoComponent } from './taskInfo.component';
@@ -26,6 +27,9 @@ import { VersionComponent } from './version.component';
 import { LinkComponent } from './link.component';
 import { CodeComponent } from './code.component';
 import { WebComponent } from './web.component';
+import { SearchComponent } from './search.component';
+
+import { AdComponent } from './ad.component';
 
 import { LoginComponent } from './login.component';
 import { RegisterComponent } from './register.component';
@@ -34,7 +38,8 @@ import { PasswordComponent } from './password.component';
 import { AuthGuard } from './shared/auth-guard.service';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/main', pathMatch: 'full' },
+  //{ path: '', redirectTo: '/main', pathMatch: 'full' },
+  { path: '', component: AdComponent },
   { path: 'main', component: MainComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
@@ -42,7 +47,7 @@ const routes: Routes = [
   { path: 'article', component: ArticleListComponent },
   { path: 'article/:id', component: ArticleDetailComponent },
   { path: 'category', component: CategoryListComponent },
-  { path: 'category/:id', component: ProductListComponent },
+  { path: 'category/:id', component: CategoryDetailComponent },
   { path: 'product/:id', component: ProductDetailComponent },
   { path: 'product/task/:id', component: TaskInfoComponent },
   { path: 'task', component: TaskListComponent, canActivate:[AuthGuard] },
@@ -58,6 +63,7 @@ const routes: Routes = [
   { path: 'link', component: LinkComponent },
   { path: 'code', component: CodeComponent, canActivate:[AuthGuard] },
   { path: 'web/:link', component: WebComponent },
+  { path: 'search', component: SearchComponent },
 ];
 
 @NgModule({

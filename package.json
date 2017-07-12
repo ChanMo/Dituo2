@@ -1,7 +1,7 @@
 {
-  "description": "NativeScript Application",
+  "description": "Dituo News",
   "license": "SEE LICENSE IN <your-license-filename>",
-  "readme": "NativeScript Application",
+  "readme": "Dituo News",
   "repository": "<fill-your-repository-here>",
   "nativescript": {
     "id": "com.chirongkeji.dituo",
@@ -26,6 +26,7 @@
     "nativescript-background-http": "^3.0.0",
     "nativescript-imagepicker": "^3.0.1",
     "nativescript-permissions": "^1.2.3",
+    "nativescript-pulltorefresh": "^2.0.1",
     "nativescript-telerik-ui": "^2.0.1",
     "nativescript-theme-core": "~1.0.4",
     "reflect-metadata": "~0.1.8",

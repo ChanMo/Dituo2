@@ -3,6 +3,7 @@
   text="返回" android.systemIcon="ic_menu_back"></NavigationButton>
 </ActionBar>
 
+<PullToRefresh (refresh)="refreshList($event)">
 <ListView [items]="taskList" class="list-group">
   <ng-template let-item="item">
     <StackLayout [nsRouterLink]="['/task', item.id]" class="list-group-item"
@@ -26,3 +27,4 @@
     </StackLayout>
   </ng-template>
 </ListView>
+</PullToRefresh>

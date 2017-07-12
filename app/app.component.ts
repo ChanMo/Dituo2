@@ -1,9 +1,10 @@
-import { Component, OnInit } from "@angular/core";
-import * as platformModule from "tns-core-modules/platform";
+import { Component } from "@angular/core";
 
-import { Device } from './shared/device';
-import { DeviceService } from './shared/device.service';
-import { AuthService } from './shared/auth.service';
+import { registerElement } from 'nativescript-angular/element-registry';
+import { PullToRefresh } from 'nativescript-pulltorefresh';
+registerElement('pullToRefresh', 
+  () => require('nativescript-pulltorefresh').PullToRefresh);
+
 //import * as app from "tns-core-modules/application";
 //import * as platform from "tns-core-modules/platform";
 //
@@ -16,32 +17,6 @@ import { AuthService } from './shared/auth.service';
 
 @Component({
     selector: "main",
-    providers: [DeviceService, AuthService],
     templateUrl: "app.component.html",
 })
-export class AppComponent implements OnInit {
-  device: Device;
-
-  constructor(
-    private deviceService: DeviceService,
-    private authService: AuthService,
-  ) {}
-  ngOnInit() {
-    if (this.authService.checkLogin()) {
-      // if login,
-      this.device = new Device(
-        platformModule.device.model,
-        platformModule.device.deviceType,
-        platformModule.device.os,
-        platformModule.device.osVersion,
-        platformModule.device.sdkVersion,
-        platformModule.device.language,
-        platformModule.device.manufacturer,
-        platformModule.device.uuid,
-      );
-      this.deviceService.update(this.device).subscribe(result => {
-        console.log(result);
-      });
-    }
-  }
-}
+export class AppComponent {}

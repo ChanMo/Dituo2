@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers, Response } from '@angular/http';
+import * as applicationSettings from 'application-settings';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/do';
@@ -15,7 +16,7 @@ export class AuthService {
   constructor(private http: Http) {}
 
   checkLogin(): boolean {
-    if (Config.token) {
+    if (applicationSettings.getString("Token")) {
       return true;
     } else {
       return false;
@@ -25,7 +26,8 @@ export class AuthService {
   getInfo() {
     let headers = new Headers();
     headers.append('Content-type', 'application/json');
-    headers.append('Authorization', 'Token ' + Config.token);
+    headers.append('Authorization',
+      'Token ' + applicationSettings.getString("Token"));
     return this.http.get(
       Config.apiUrl + 'me/',
       { headers: headers }
@@ -49,7 +51,8 @@ export class AuthService {
   ): Observable<any> {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    headers.append('Authorization', 'Token ' + Config.token);
+    headers.append('Authorization',
+      'Token ' + applicationSettings.getString("Token"));
     return this.http.post(
       Config.apiUrl + 'reset-password/',
       {"old_password":oldPassword,"new_password":newPassword},
@@ -69,7 +72,8 @@ export class AuthService {
     )
     .map(response => {
       let result = response.json();
-      Config.token = result.token;
+      //Config.token = result.token;
+      applicationSettings.setString("Token", result.token);
     })
     .catch(this.handleErrors);
   }

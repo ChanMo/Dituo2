@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers, Response } from '@angular/http';
+import * as applicationSettings from 'application-settings';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
@@ -12,12 +13,16 @@ import { Config } from '../config';
 
 @Injectable()
 export class TaskService {
+  public nextPage: string;
+  public listEnd: boolean = false;
+
   constructor(private http: Http) {}
 
   create(id: number, description: string, point: number) {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    headers.append('Authorization', 'Token ' + Config.token);
+    headers.append('Authorization',
+      'Token ' + applicationSettings.getString("Token"));
     return this.http.post(
       Config.apiUrl + 'task/',
       { "product": id, "description": description, "point": point },
@@ -32,10 +37,25 @@ export class TaskService {
   update(id: number) {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    headers.append('Authorization', 'Token ' + Config.token);
+    headers.append('Authorization',
+      'Token ' + applicationSettings.getString("Token"));
     return this.http.patch(
       Config.apiUrl + 'task/' + id + '/',
       { "status": 5 },
+      { headers: headers },
+    )
+    .map(response => response.json())
+    .catch(this.handleErrors);
+  }
+
+  submit(id: number, name: string, mobile: string) {
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    headers.append('Authorization',
+      'Token ' + applicationSettings.getString("Token"));
+    return this.http.patch(
+      Config.apiUrl + 'task/' + id + '/',
+      { "status": 2, "name": name, "mobile": mobile },
       { headers: headers },
     )
     .map(response => response.json())
@@ -50,14 +70,14 @@ export class TaskService {
       method: "PUT",
       headers: {
         "Content-Type": "application/octet-stream",
-        "Authorization": "Token " + Config.token,
+        "Authorization": "Token " + applicationSettings.getString("Token"),
         "File-Name":  imageName
       },
       description: "{'file': '" + imageName + "'}"
     };
 
     var task = session.uploadFile(image, request);
-    console.dir(task);
+    //console.dir(task);
 
     task.on("progress", this.logEvent);
     task.on("error", this.logEvent);
@@ -93,19 +113,34 @@ export class TaskService {
 		//});
     //console.log("currentBytes: " + e.currentBytes);
     //console.log("totalBytes: " + e.totalBytes);
-    console.log("eventName: " + e.eventName);
+    //console.log("eventName: " + e.eventName);
   }
 
   getList(): Observable<Task[]> {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    headers.append('Authorization', 'Token ' + Config.token);
+    headers.append('Authorization',
+      'Token ' + applicationSettings.getString("Token"));
+
+    let url: string;
+
+    if (this.nextPage === undefined) {
+      url = Config.apiUrl + 'task/';
+    } else {
+      url = this.nextPage;
+    }
+
     return this.http.get(
-      Config.apiUrl + 'task/',
+      url,
       { headers: headers }
     )
     .map(response => {
-      return response.json().results
+      let body = response.json();
+      this.nextPage = body.next;
+      if (body.next === null) {
+        this.listEnd = true;
+      }
+      return body.results;
     })
     .catch(this.handleErrors);
   }
@@ -113,7 +148,8 @@ export class TaskService {
   getDetail(id: number): Observable<Task> {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    headers.append('Authorization', 'Token ' + Config.token);
+    headers.append('Authorization',
+      'Token ' + applicationSettings.getString("Token"));
     return this.http.get(
       Config.apiUrl + 'task/' + id + '/',
       { headers: headers }

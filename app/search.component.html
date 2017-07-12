@@ -1,0 +1,20 @@
+<ActionBar class="action-bar" title="搜索">
+<ActionItem>
+<SearchBar [text]="searchPhrase" textFieldBackgroundColor="white" color="#666"
+(submit)="search($event)"></SearchBar>
+</ActionItem>
+</ActionBar>
+
+<android>
+<TabView>
+  <StackLayout *tabItem="{title: '资讯'}">
+  <article-list [search]="searchString"></article-list>
+  </StackLayout>
+  <StackLayout *tabItem="{title: '应用'}">
+  <product-list [search]="searchString"></product-list>
+  </StackLayout>
+  <StackLayout *tabItem="{title: '商品'}">
+  <commodity-list [search]="searchString"></commodity-list>
+  </StackLayout>
+</TabView>
+</android>

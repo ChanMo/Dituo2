@@ -13,6 +13,7 @@ import { ArticleListComponent } from './articleList.component';
 import { ArticleDetailComponent } from './articleDetail.component';
 
 import { CategoryListComponent } from './categoryList.component';
+import { CategoryDetailComponent } from './categoryDetail.component';
 import { ProductListComponent } from './productList.component';
 import { ProductDetailComponent } from './productDetail.component';
 import { TaskInfoComponent } from './taskInfo.component';
@@ -29,12 +30,15 @@ import { VersionComponent } from './version.component';
 import { LinkComponent } from './link.component';
 import { CodeComponent } from './code.component';
 import { WebComponent } from './web.component';
+import { SearchComponent } from './search.component';
 
 import { MemberComponent } from './member.component';
 import { InfoComponent } from './info.component';
 import { LoginComponent } from './login.component';
 import { RegisterComponent } from './register.component';
 import { PasswordComponent } from './password.component';
+
+import { AdComponent } from './ad.component';
 
 import { AuthGuard } from './shared/auth-guard.service';
 import { AuthService } from './shared/auth.service';
@@ -60,6 +64,7 @@ import { AuthService } from './shared/auth.service';
         ArticleListComponent,
         ArticleDetailComponent,
         CategoryListComponent,
+        CategoryDetailComponent,
         ProductListComponent,
         ProductDetailComponent,
         TaskInfoComponent,
@@ -79,6 +84,8 @@ import { AuthService } from './shared/auth.service';
         LinkComponent,
         CodeComponent,
         WebComponent,
+        AdComponent,
+        SearchComponent,
     ],
     schemas: [
         NO_ERRORS_SCHEMA
