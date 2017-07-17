@@ -13,8 +13,13 @@
   <Label [text]="article.name" textWrap="true"
     style="font-size:18;margin-bottom:20;"></Label>
   <Image [src]="article.image"></Image>
+  <android>
   <WebView [src]="'http://dituo.chirongkeji.com/article/' + article.id +  '/'">
   </WebView>
+  </android>
+  <ios>
+  <HtmlView class="body" [html]="article.content"></HtmlView>
+  </ios>
 </StackLayout>
 
 </ScrollView>

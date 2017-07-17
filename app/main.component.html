@@ -1,7 +1,14 @@
+<android>
 <ActionBar class="action-bar" title="帝拓资讯">
 <ActionItem ios.systemIcon="12" android.systemIcon="ic_menu_search"
 [nsRouterLink]="['/search']"></ActionItem>
 </ActionBar>
+</android>
+
+<ios>
+<ActionBar class="action-bar" title="帝拓资讯">
+</ActionBar>
+</ios>
 
 <GridLayout rows="*,auto">
   <StackLayout row="0" visibility="{{ visibility1 ? 'visible' : 'collapsed' }}"
