@@ -9,8 +9,8 @@
 </android>
 
 <ios>
-<StackLayout>
-  <ScrollView orientation="horizontal">
+<GridLayout rows="auto,*">
+  <ScrollView orientation="horizontal" row="0">
     <StackLayout orientation="horizontal"
     style="background-color:white;margin-bottom:1;">
         <Label *ngFor="let tab of categoryList; let i=index" [text]="tab.name"
@@ -19,9 +19,9 @@
         </Label>
     </StackLayout>
   </ScrollView>
-  <StackLayout *ngFor="let tab of categoryList; let i=index"
+  <StackLayout row="1" *ngFor="let tab of categoryList; let i=index"
   visibility="{{ selectedIndex == i ? 'visible' : 'collapsed' }}" >
     <article-list [category]="tab.id"></article-list>
   </StackLayout>
-</StackLayout>
+</GridLayout>
 </ios>
