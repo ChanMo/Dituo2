@@ -8,36 +8,14 @@
       [nsRouterLink]="['/info']" style="color:white;margin-top:5;"></Label>
   </StackLayout>
 
-  <GridLayout columns="40,*,30" [nsRouterLink]="['/task']" class="member-item">
-    <Label col="0" class="icon" text="&#xf278;"></Label>
-    <Label col="1" text="我的任务"></Label>
-    <Label col="2" class="icon" text="&#xf105;"></Label>
-  </GridLayout>
-  <GridLayout columns="40,*,30" [nsRouterLink]="['/code']" class="member-item">
-    <Label col="0" class="icon" text="&#xf130;"></Label>
-    <Label col="1" text="我要代言"></Label>
-    <Label col="2" class="icon" text="&#xf105;"></Label>
-  </GridLayout>
-  <GridLayout columns="40,*,30" [nsRouterLink]="['/point']" class="member-item">
-    <Label col="0" class="icon" text="&#xf145;"></Label>
-    <Label col="1" text="我的积分"></Label>
-    <Label col="2" class="icon" text="&#xf105;"></Label>
-  </GridLayout>
-  <GridLayout columns="40,*,30" [nsRouterLink]="['/version']" class="member-item">
-    <Label col="0" class="icon" text="&#xf129;"></Label>
-    <Label col="1" text="关于帝拓"></Label>
-    <Label col="2" class="icon" text="&#xf105;"></Label>
-  </GridLayout>
-  <GridLayout columns="40,*,30" [nsRouterLink]="['/contact']" class="member-item">
-    <Label col="0" class="icon" text="&#xf003;"></Label>
-    <Label col="1" text="联系我们"></Label>
-    <Label col="2" class="icon" text="&#xf105;"></Label>
-  </GridLayout>
-  <GridLayout columns="40,*,30" [nsRouterLink]="['/web', 'http://m.baidu.com']"
-  class="member-item">
-    <Label col="0" class="icon" text="&#xf09d;"></Label>
-    <Label col="1" text="申请信用卡"></Label>
-    <Label col="2" class="icon" text="&#xf105;"></Label>
-  </GridLayout>
-
+<ListView [items]="shortcutList">
+  <ng-template let-item="item">
+      <GridLayout columns="40,*,30" [nsRouterLink]="item.url"
+      class="member-item">
+      <Label col="0" class="icon" [text]="item.icon | fromCharCode"></Label>
+      <Label col="1" [text]="item.name"></Label>
+      <Label col="2" class="icon" text="&#xf105;"></Label>
+    </GridLayout>
+  </ng-template>
+</ListView>
 </StackLayout>
